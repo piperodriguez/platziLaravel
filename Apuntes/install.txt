@@ -1,0 +1,22 @@
+instalar laravel globalmente en
+el pc
+
+open terminal:
+composer global require laravel/installer
+
+verificamos ejecutando
+el comando laravel
+
+me ubico en la carpeta del
+repositorio
+
+y con el comando new
+creamos un nuevo proyecto
+
+comando
+laravel new
+
+
+despues corremos el servidor
+
+php artisan serve
