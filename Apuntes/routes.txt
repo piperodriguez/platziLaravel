@@ -1,0 +1,23 @@
+se encuentran en el folder RouteServiceProvider
+file web.php
+
+ejemplo de crar una ruta y que retorne un json
+
+
+Route::get('/firstRuta', function(){
+  return [
+    'saludo' => 'Hola',
+    'nombre' => 'Juan Felipe'
+  ];
+});
+
+resultado browser:
+
+{"saludo":"Hola","nombre":"Juan Felipe"}
+
+
+conocemos
+put, post ,get y este nuevo any que permite todo
+
+
+Route::any('');
