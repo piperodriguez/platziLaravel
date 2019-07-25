@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 class TableroController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $titulo = "Curso Platzi Laravel from controller";
+
+          //dd($request->query('titulo'));
+
+
+        $titulo = "Curso Platzi Laravel from controller b ";
         return view('layout',[
           'titulo' => $titulo
         ]);

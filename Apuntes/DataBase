@@ -1,0 +1,84 @@
+laravel eloquent
+
+
+archivo de configuración a la base de datos:
+.APP_ENV
+
+
+Databases
+
+migrations: permite crear la estructura de la base de datos
+y un versionamiento.
+
+ejecutar: php artisan migrate
+
+crear migraciones:
+php artisan make:migration create_table_reporte_gastos --create=reporte_gastos
+
+
+revertir ultima migracion:
+php artisan migrate:rollback
+
+resetar todo:
+
+php artisan migrate:fresh
+
+CREACION DE MODELOS:
+
+php artisan make:model reporte_gasto
+
+para manipular la base de datos desde Laravel
+es como un entorno de pruebas jeje
+ejecutamos:
+
+php artisan tinker
+
+App\Models\reporte_gasto::all();
+
+retorna un arreglo
+
+
+para inicializar un modelo en tinker
+o tambien puede decir vamos a crear un nuevo reporte_gasto
+$report = new App\Models\reporte_gasto();
+
+esto crea un objeto en memoria
+
+para salvarlo en la bd es:
+
+$report->save();
+
+
+para listar
+
+$report->all();
+
+
+
+con exit cerramos tinker
+
+Si ppor algun motivo necesitamos  modificar una tabla
+no es buena practica ir a modificar la migracion existente
+puede causar conflictos cuando trabajemos varios developers
+en el proyecto
+
+entonces creamos una nueva migracion: --table
+
+php artisan make:migration create_columna_desc_gasto_en_reporte_gastos --table reporte_gastos
+se modifica el archivo con la nueva columna
+y ejecutamos la migracion
+php artisan migrate
+
+
+entramos a tinker y asignemole un valor a la nueva
+columna creada
+
+php artisan tinker
+
+$report = new App\Models\reporte_gasto();
+
+$report->desc_gasto = 'Curso platzi';
+
+report->save();
+
+report->all();
