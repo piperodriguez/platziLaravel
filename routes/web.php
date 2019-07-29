@@ -14,3 +14,8 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/tablero', 'TableroController@index');
+
+//crud tabla reporte_gastos
+Route::resource('/controlGastos', 'ReporteGastos');
+
+Route::get('controlGastos/{id}');

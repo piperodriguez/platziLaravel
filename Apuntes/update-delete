@@ -1,0 +1,10 @@
+Fake PUT/PATCH
+En Laravel cuando usamos recursos nos pone Put y Patch
+como una opción para modificar nuestros recursos.
+El problema de esto es que en un form no se puede especificar directamente que
+queremos hacer un Put o un Patch y por esto Laravel nos ofrece un mecanismo para hacer
+”Fake PUT/PATCH” y podamos recibir y procesar los datos.
+
+Para que Laravel acepte el Put o Patch es necesario poner dentro del
+form de manera auxiliar @method(‘tipo de método usado’) y así aunque el form
+tenga un POST como método, realmente será traducido al que especifiquemos dentro del auxiliar.

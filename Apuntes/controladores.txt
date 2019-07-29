@@ -1,0 +1,29 @@
+Controladores y recursos
+CRUD significa create (crear), read (leer), update (actualizar o editar), delete (eliminar).
+
+resource genera una clase de controlador de tipo recurso.
+Esto significa que tendremos todo lo necesario para poder hacer CRUD.
+
+index: Aquí se despliegan todos los elementos a mostrar.
+create: Creará nuevos elementos.
+store: Guardará los elementos creados en create.
+show: Mostrará a detalle un solo elemento y por eso es que recibe un id.
+edit: Edita los elementos que mostramos en show.
+update: Almacena los cambios de edit en la base de datos.
+destroy: Eliminará los elementos.
+En route:list podremos ver todas las rutas que tenemos definidas
+
+Para crear una ruta de un controlador resource no usamos get o post,
+sino directamente la estructura Route::resource();
+ya que de esta manera se nos crearán rutas para cada uno de los métodos
+anteriormente mencionados que son creados por el controlador resource.
+
+
+
+se crea un controlador con los metodos necesarios para un crud
+--resource
+
+php artisan make:controller ReporteGastos --resource
+
+
+para mirar todas las rutas php artisan route:list
