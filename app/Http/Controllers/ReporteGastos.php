@@ -64,7 +64,8 @@ class ReporteGastos extends Controller
      */
     public function edit($id)
     {
-        $reporte = reporte_gasto::find($id);
+        //findOrFail si no existe arroja un mensaje
+        $reporte = reporte_gasto::findOrFail($id);
         return view('reportesGastos.update',[
           'reporte' => $reporte
         ]);
@@ -85,6 +86,13 @@ class ReporteGastos extends Controller
         return redirect('/controlGastos');
     }
 
+    public function confirmarDelete($id)
+    {
+        $reporte = reporte_gasto::find($id);
+        return view('reportesGastos.confirmDelete',[
+            'reporte' => $reporte
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -93,6 +101,8 @@ class ReporteGastos extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $reporte = reporte_gasto::find($id);
+        $reporte->delete();
+        return redirect('/controlGastos');
     }
 }

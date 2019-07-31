@@ -29,7 +29,7 @@
               <a href="{{ route('controlGastos.edit', [$reporte->id]) }}" class="btn btn-xs btn-dark">Actualizar</a>
             </td>
             <td>
-              <a href="{{ route('controlGastos.destroy', [$reporte->id]) }}" class="btn btn-xs btn-danger">Eliminar</a>
+              <a href="controlGastos/{{ $reporte->id }}/confirmarDelete" class="btn btn-xs btn-danger">Eliminar</a>
             </td>
           </tr>
           @endforeach

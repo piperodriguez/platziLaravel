@@ -8,6 +8,11 @@
 </div>
 <div class="row">
   <div class="col">
+    <a href="{{ route('controlGastos.index') }}" class="btn btn-dark">Listado de Gastos</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
     <form action="{{ route('controlGastos.update', ['id' => $reporte->id]) }}" method="POST">
       @csrf
       @method('put')
