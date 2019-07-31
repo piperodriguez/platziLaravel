@@ -24,7 +24,9 @@
         <tbody>
           @foreach($reportes as $reporte)
           <tr>
-            <td>{{$reporte->desc_gasto}}</td>
+            <td>
+              <a href="{{ route('controlGastos.show', [$reporte->id]) }}">{{$reporte->desc_gasto}}</a>
+            </td>
             <td>
               <a href="{{ route('controlGastos.edit', [$reporte->id]) }}" class="btn btn-xs btn-dark">Actualizar</a>
             </td>

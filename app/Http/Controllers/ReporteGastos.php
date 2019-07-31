@@ -58,6 +58,10 @@ class ReporteGastos extends Controller
      */
     public function show($id)
     {
+      $reporte = reporte_gasto::findOrFail($id);
+      return view('reportesGastos.show',[
+        'reporte' => $reporte
+      ]);
 
     }
 
