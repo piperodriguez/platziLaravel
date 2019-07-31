@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\reporteGasto;
 
-class ReporteGastos extends Controller
+class GastoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class ReporteGastos extends Controller
      */
     public function index()
     {
-        $reportes = reporteGasto::all();
-        return view('reportesGastos.index',[
-          'reportes' => $reportes
-        ]);
+        //
     }
 
     /**
@@ -27,7 +23,7 @@ class ReporteGastos extends Controller
      */
     public function create()
     {
-      return view('reportesGastos.create');
+        //
     }
 
     /**
@@ -38,16 +34,7 @@ class ReporteGastos extends Controller
      */
     public function store(Request $request)
     {
-
-        $validacion = $request->validate([
-            'desc_gasto' => 'required|min:3'
-        ]);
-
-        $reporte = new reporteGasto();
-        $reporte->desc_gasto = $validacion['desc_gasto'];
-        $reporte->save();
-
-        return redirect('/controlGastos');
+        //
     }
 
     /**
@@ -58,11 +45,7 @@ class ReporteGastos extends Controller
      */
     public function show($id)
     {
-      $reporte = reporteGasto::findOrFail($id);
-      return view('reportesGastos.show',[
-        'reporte' => $reporte
-      ]);
-
+        //
     }
 
     /**
@@ -73,11 +56,7 @@ class ReporteGastos extends Controller
      */
     public function edit($id)
     {
-        //findOrFail si no existe arroja un mensaje
-        $reporte = reporteGasto::findOrFail($id);
-        return view('reportesGastos.update',[
-          'reporte' => $reporte
-        ]);
+        //
     }
 
     /**
@@ -89,19 +68,9 @@ class ReporteGastos extends Controller
      */
     public function update(Request $request, $id)
     {
-        $reporte = reporteGasto::find($id);
-        $reporte->desc_gasto = $request->get('desc_pago');
-        $reporte->save();
-        return redirect('/controlGastos');
+        //
     }
 
-    public function confirmarDelete($id)
-    {
-        $reporte = reporteGasto::find($id);
-        return view('reportesGastos.confirmDelete',[
-            'reporte' => $reporte
-        ]);
-    }
     /**
      * Remove the specified resource from storage.
      *
@@ -110,8 +79,6 @@ class ReporteGastos extends Controller
      */
     public function destroy($id)
     {
-        $reporte = reporteGasto::find($id);
-        $reporte->delete();
-        return redirect('/controlGastos');
+        //
     }
 }

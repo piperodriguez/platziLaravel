@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col">
       <a href="{{ route('controlGastos.create') }}" class="btn btn-dark">
-        Nuevo Gasto
+        Nuevo Reporte Gasto
       </a>
     </div>
   </div>

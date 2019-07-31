@@ -82,3 +82,119 @@ $report->desc_gasto = 'Curso platzi';
 report->save();
 
 report->all();
+
+ /***************************************************/
+
+RELACIONES CON ELOQUENT
+
+Si estamos hablando de un blogpost,
+es posible que éste esté relacionado con múltiples comentarios y
+a su vez con un solo creador.
+
+Existen muchas maneras para relacionar bases de datos y esto nos ayudará
+a tener una integridad y una referencia hacia lo que necesitamos.
+
+-m o –migration son exactamente lo mismo y se pueden usar indistintamente.
+Haremos una relación de muchos a uno, es decir que un reporte puede tener muchos detalles.
+PHP en sus últimas versiones nos ofrece que todas
+ las clases contienen la propiedad estática que es el nombre de la clase y la regresa directamente.
+
+
+ENTONCES existe una opcion que permite crear un modelo y de una vez la migracion perteneciente
+a ese modelo
+
+php artisan make:model --migration Models/Gastos
+
+
+luego modificamos la migraacion
+
+
+donde el campo en la migracion que debe contener la llave foranea debe ser
+con la siguiente tipo de datos unsignedIntenger:
+
+$table->unsignedInteger();
+
+latabla padre jejejeejej
+
+public function constraint_gastos()
+ {
+   return $this->hasMany(Gastos::class);
+ }
+
+
+la tabla que tiene la llave forania
+
+ public function constraint_reporte()
+ {
+   return $this->belongsTo(reporte_gasto::class);
+ }
+
+
+
+despues de eso probamos con tinker
+
+
+php artisan tinker
+
+App\Models\reporte_gasto::first();
+
+
+
+>>> App\Models\Gastos::first();
+=> null
+>>> $gasto = new App\Models\Gastos;
+=> App\Models\Gastos {#133}
+>>> $gasto->reporte_gasto_id=1;
+=> 1
+>>> $gasto->descripcion='Pago de 7 semestre ingeniria de sistams';
+=> "Pago de 7 semestre ingeniria de sistams"
+>>> $gasto->valor=980000;
+=> 980000
+>>> $gasto->save();
+=> true
+>>> $gasto->all();
+
+
+ahora probemos las realciones
+
+
+
+[frodriguez@ws-solatibog35 platziLaravel]$ php artisan tinker
+Psy Shell v0.9.9 (PHP 7.3.4 — cli) by Justin Hileman
+>>> App\Models\reporteGasto::first();
+=> App\Models\reporteGasto {#2964
+     id: 1,
+     created_at: "2019-07-31 20:21:34",
+     updated_at: "2019-07-31 20:21:34",
+     desc_gasto: "prueba",
+   }
+>>> App\Models\reporteGasto::first()->gastos;;
+=> Illuminate\Database\Eloquent\Collection {#2969
+     all: [
+       App\Models\Gastos {#2961
+         id: 1,
+         reporte_gasto_id: 1,
+         descripcion: "Pago de 7 semestre ingeniria de sistams",
+         valor: "980000.00",
+         created_at: "2019-07-31 20:38:01",
+         updated_at: "2019-07-31 20:38:01",
+       },
+     ],
+   }
+>>> App\Models\Gastos::first();
+=> App\Models\Gastos {#2959
+     id: 1,
+     reporte_gasto_id: 1,
+     descripcion: "Pago de 7 semestre ingeniria de sistams",
+     valor: "980000.00",
+     created_at: "2019-07-31 20:38:01",
+     updated_at: "2019-07-31 20:38:01",
+   }
+>>> App\Models\Gastos::first()->reporteGasto;
+=> App\Models\reporteGasto {#2956
+     id: 1,
+     created_at: "2019-07-31 20:21:34",
+     updated_at: "2019-07-31 20:21:34",
+     desc_gasto: "prueba",
+   }
+>>>
