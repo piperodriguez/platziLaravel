@@ -38,8 +38,13 @@ class ReporteGastos extends Controller
      */
     public function store(Request $request)
     {
+
+        $validacion = $request->validate([
+            'desc_gasto' => 'required|min:3'
+        ]);
+
         $reporte = new reporte_gasto();
-        $reporte->desc_gasto = $request->get('desc_pago');
+        $reporte->desc_gasto = $validacion['desc_gasto'];
         $reporte->save();
 
         return redirect('/controlGastos');
