@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Gastos;
+use App\Models\reporteGasto;
 use Illuminate\Http\Request;
 
 class GastoController extends Controller
@@ -21,9 +22,15 @@ class GastoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $id_reporte = $id;
+
+        $reporte = reporteGasto::findOrFail($id);
+        return view('gastos.create',[
+          'id_reporte' => $id_reporte,
+          'reporte' => $reporte
+        ]);
     }
 
     /**
@@ -34,7 +41,16 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $id = $request->reporte_gasto_id;
+      $gasto = new Gastos();
+      $gasto->reporte_gasto_id = $request->reporte_gasto_id;
+      $gasto->descripcion = $request->descripcion;
+      $gasto->valor = $request->valor;
+      $gasto->save();
+
+      return redirect('/controlGastos/'.$id);
+
+      //$gasto->reporte_gasto_id =
     }
 
     /**

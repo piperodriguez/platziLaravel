@@ -27,11 +27,15 @@
         <tr>
           <td>{{ $gasto->created_at }}</td>
           <td>{{ $gasto->descripcion }}</td>
-          <td>{{ $gasto->valor }}</td>
+          <td><b>$</b>&nbsp;{{ $gasto->valor }}</td>
         </tr>
       @endforeach
     </table>
   </div>
 </div>
-
+<div class="row">
+  <div class="col">
+    <a href="/controlGastos/{{ $reporte->id }}/gasto/create" class="btn btn-dark">Nuevo Gasto</a>
+  </div>
+</div>
 @endsection

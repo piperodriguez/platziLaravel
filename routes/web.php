@@ -18,4 +18,8 @@ Route::get('/tablero', 'TableroController@index');
 //crud tabla reporte_gastos
 Route::resource('/controlGastos', 'ReporteGastos');
 
-Route::get('controlGastos/{id}/confirmarDelete', 'ReporteGastos@confirmarDelete');
+Route::get('/controlGastos/{id}/confirmarDelete', 'ReporteGastos@confirmarDelete');
+
+
+Route::get('/controlGastos/{id}/gasto/create', 'GastoController@create');
+Route::post('/controlGastos/{id}/gasto/create', 'GastoController@store')->name('gasto.store');

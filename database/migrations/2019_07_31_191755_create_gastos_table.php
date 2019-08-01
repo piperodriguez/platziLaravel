@@ -18,7 +18,7 @@ class CreateGastosTable extends Migration
             //reñacopm muchos a uno
             $table->unsignedInteger('reporte_gasto_id');
             $table->text('descripcion');
-            $table->decimal('valor');
+            $table->bigInteger('valor');
             $table->timestamps();
         });
     }
