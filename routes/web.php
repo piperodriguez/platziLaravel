@@ -23,3 +23,11 @@ Route::get('/controlGastos/{id}/confirmarDelete', 'ReporteGastos@confirmarDelete
 
 Route::get('/controlGastos/{id}/gasto/create', 'GastoController@create');
 Route::post('/controlGastos/{id}/gasto/create', 'GastoController@store')->name('gasto.store');
+
+Route::get('/controlGastos/{id}/confirmarEnvioEmail', 'ReporteGastos@ConfirmarsendEmail');
+Route::post('/controlGastos/{id}/EnviarEmail', 'ReporteGastos@sendEmail')->name('send.email');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

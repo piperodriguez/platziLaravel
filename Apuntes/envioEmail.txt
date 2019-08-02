@@ -1,0 +1,16 @@
+Enviando emails
+Para enviar correos electrónicos necesitamos usar algún servicio especializado en lugar de cuentas propias tipo gmail porque estas últimas tienden a bloquearse al detectar mucha actividad de envíos. mailtrap.io ofrece un servicio especial para probar cómo funciona el envío de correos durante el desarrollo de una aplicación.
+
+Dentro de tu cuenta de mailtrap tendrás tus diferentes bandejas de entrada y al entrar a ellas encontrarás las credenciales necesarias para configurar la aplicación. Lo más común es usar credenciales SMTP.
+En nuestro archivo .env encontraremos cómo configurar el envío de email. Necesitaremos el username y el password.
+La configuración real se hace siempre dentro de la carpeta config en el archivo mail.php
+PHP artisan nos provee el comando make:mail que se usa para crear una nueva clase de email. En Laravel los correos electrónicos son objetos que podemos trabajar con ciertas características e incluso darles un template para que sean rendereados.
+Laravel nos ofrece un facade llamado Mail que nos ayuda a hacer el envío.
+
+
+php artisan make:mail ReportesGastos
+
+
+dentgro de  app se creo una carptea que se llama mail
+
+

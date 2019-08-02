@@ -1,0 +1,5 @@
+Login
+Para evitar que todo el contenido de la aplicación sea público, es necesario utilizar un sistema de autentificación de los usuarios. Para esto tenemos muchos mecanismos en Laravel supremamente sencillos de utilizar.
+
+PHP artisan nos ofrece make:auth que es una estructura para hacer un login y registro básicos con las vistas y las rutas.
+Al agregar la línea $this->middleware(‘auth’); tenemos el controlador protegido, lo que quiere decir que no puede ser accedido si el usuario no está logueado.

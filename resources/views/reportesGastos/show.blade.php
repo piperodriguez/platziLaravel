@@ -1,8 +1,7 @@
-@extends('layouts.base')
-@section('contenedor')
-
-
-<div class="row">
+@extends('layouts.app')
+@section('content')
+<div class="container">
+  <div class="row">
   <div class="col">
     <h1> Gasto {{ $reporte->desc_gasto }}</h1>
   </div>
@@ -10,6 +9,11 @@
 <div class="row">
   <div class="col">
     <a href="{{ route('controlGastos.index') }}" class="btn btn-dark">Listado de Gastos</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col offset-9">
+    <a href="{{$reporte->id}}/confirmarEnvioEmail" class="btn btn-danger">Envial email</a>
   </div>
 </div>
 <div class="row">
@@ -38,4 +42,6 @@
     <a href="/controlGastos/{{ $reporte->id }}/gasto/create" class="btn btn-dark">Nuevo Gasto</a>
   </div>
 </div>
+</div>
+
 @endsection

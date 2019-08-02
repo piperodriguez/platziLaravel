@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\reporteGasto;
-
+use App\Mail\ReportesGastosEmail;
 class ReporteGastos extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -114,4 +119,23 @@ class ReporteGastos extends Controller
         $reporte->delete();
         return redirect('/controlGastos');
     }
+
+
+    public function ConfirmarsendEmail($id)
+    {
+        $reporte = reporteGasto::findOrFail($id);
+        return view('reportesGastos.confirmSendEmail',[
+          'reporte' => $reporte
+        ]);
+    }
+
+
+    public function sendEmail(Request $request, $id)
+    {
+        $reporte = reporteGasto::findOrFail($id);
+        \Mail::to($request->get('email'))->send(new ReportesGastosEmail($reporte));
+        return redirect('/controlGastos');
+    }
+
+
 }

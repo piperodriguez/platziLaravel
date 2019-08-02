@@ -1,6 +1,7 @@
-@extends('layouts.base')
-@section('contenedor')
-  <div class="row">
+@extends('layouts.app')
+@section('content')
+<div class="container">
+    <div class="row">
     <div class="col">
       <h1>Reporte de gastos</h1>
     </div>
@@ -39,4 +40,5 @@
       </table>
     </div>
   </div>
+</div>
 @endsection
