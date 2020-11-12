@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\reporteGasto;
 use App\Mail\ReportesGastosEmail;
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * controlador que controla la logica del control de gastos
+ */
 class ReporteGastos extends Controller
 {
 
@@ -19,7 +24,8 @@ class ReporteGastos extends Controller
      */
     public function index()
     {
-        $reportes = reporteGasto::all();
+        $userId = Auth::id();
+        $reportes = reporteGasto::where('user_id', $userId)->get();
         return view('reportesGastos.index',[
           'reportes' => $reportes
         ]);
@@ -43,13 +49,14 @@ class ReporteGastos extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $validacion = $request->validate([
             'desc_gasto' => 'required|min:3'
         ]);
-
+        $userId = Auth::id();
         $reporte = new reporteGasto();
         $reporte->desc_gasto = $validacion['desc_gasto'];
+        $reporte->user_id = $userId;
         $reporte->save();
 
         return redirect('/controlGastos');
